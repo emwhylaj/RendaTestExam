@@ -6,12 +6,15 @@
 
         int[] arr = { 0, 0, 0, 1, 1, 1, 2, 4, 5 };
 
-        int[] res = array.ReturnDistinctValue(arr);
+        //int[] res = array.ReturnDistinctValue(arr);
 
-        for (int i = 0; i < res.Length; i++)
-        {
-            Console.WriteLine(res[i]);
-        }
+        int res = array.NumberOfOccurence(arr);
+
+        //for (int i = 0; i < res.Length; i++)
+        //{
+        //    Console.WriteLine(res[i]);
+        //}
+        Console.WriteLine(res);
     }
 }
 
@@ -40,5 +43,38 @@ public class ArrayTest
             newArr[j] = intArr[j];
         }
         return newArr;
+    }
+
+    public int NumberOfOccurence(int[] intArr)
+    {
+        //Extend the program with a method that can return the element of the integer array that has the highest number of occurrence.
+
+        int[] arr = intArr;
+        int count = 1, maxCount = 1, maxValue = 0;
+
+        int result = 0;
+        for (int i = 0; i < arr.Length; i++)
+        {
+            maxCount = arr[i];
+
+            for (int j = 0; j < arr.Length; j++)
+            {
+                if (maxValue == arr[j] && j != i)
+                {
+                    count++;
+
+                    if (count > maxCount)
+                    {
+                        maxCount = count;
+                        result = arr[i];
+                    }
+                }
+                else
+                {
+                    count = 1;
+                }
+            }
+        }
+        return result;
     }
 }
